@@ -1,0 +1,37 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'users/list', user: @user, book: @book_new %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Book detail</h2>
+  		<table class='table'>
+  		  <thead></thead>
+  		  <tbody>
+  		    <tr valign="middle">
+  		      <td align="center">
+  		        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
+  		        <%= link_to user_path(@user) do %>
+  		          <%= @user.name %>
+  		        <% end %>
+  		      </td>
+  		      <td>
+  		        <%= link_to book_path(@book) do %>
+  		          <%= @book.title %>
+  		        <% end %>
+  		      </td>
+  		      <td><%= @book.body %></td>
+  		      <% if @user == current_user %>
+  		        <td>
+  		          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
+  		        </td>
+  		        <td>
+                <%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger", method: :delete %>
+  		        </td>
+  		      <% end %>
+  		    </tr>
+  		  </tbody>
+      </table>
+    </div>
+  </div>
+</div>
